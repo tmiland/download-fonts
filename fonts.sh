@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 declare -a fonts=(
   BitstreamVeraSansMono
@@ -21,7 +21,7 @@ declare -a fonts=(
   UbuntuMono
 )
 
-version='2.1.0'
+version='2.3.0-RC'
 fonts_dir="${HOME}/.local/share/fonts"
 
 if [[ ! -d "$fonts_dir" ]]; then
@@ -33,7 +33,7 @@ for font in "${fonts[@]}"; do
   download_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/${zip_file}"
   echo "Downloading ${font}"
   wget "$download_url"
-  unzip "$zip_file" -d "$fonts_dir"
+  unzip "$zip_file" -d "$fonts_dir/$font"
   rm "$zip_file"
 done
 
